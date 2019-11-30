@@ -1,4 +1,4 @@
-//! Raw bindings to the apache-arrow API for projects using wasm-bindgen
+//! Raw bindings to the parquetjs API for projects using wasm-bindgen
 
 #![deny(clippy::all)]
 
