@@ -1,1 +1,1 @@
-initSidebarItems({});
+initSidebarItems({"struct":[["Cursor",""],["EnvelopeReader",""],["EnvelopeWriter",""],["Reader",""],["Schema",""],["Transformer",""],["Writer",""]]});
