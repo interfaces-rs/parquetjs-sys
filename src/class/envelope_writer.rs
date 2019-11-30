@@ -19,7 +19,7 @@ extern {
     // Static Methods //
     //****************//
 
-    #[wasm_bindgen(static_method_of = Writer, js_name = "openStream")]
+    #[wasm_bindgen(static_method_of = EnvelopeWriter, js_name = "openStream")]
     pub fn open_stream(schema: &JsValue, output_stream: &JsValue, opts: &JsValue) -> EnvelopeWriter;
 
     //******************//
