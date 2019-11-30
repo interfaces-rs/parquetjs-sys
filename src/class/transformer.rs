@@ -1,6 +1,3 @@
-
-
-use crate::class::Cursor;
 use js_sys::Promise;
 use wasm_bindgen::prelude::*;
 
