@@ -3,7 +3,7 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 extern {
-    #[wasm_bindgen(js_name = "ParquetReader")]
+    #[wasm_bindgen(js_name = "ParquetCursor")]
     #[derive(Clone, Debug, Eq, PartialEq)]
     pub type Cursor;
 
