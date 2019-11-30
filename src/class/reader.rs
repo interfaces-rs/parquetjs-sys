@@ -19,7 +19,7 @@ extern {
     // Static Methods //
     //****************//
 
-    #[wasm_bindgen(static_method_of = EnvelopeReader, js_name = "openFile")]
+    #[wasm_bindgen(static_method_of = Reader, js_name = "openFile")]
     pub fn open_file(file_path: &JsValue) -> Promise;
 
     //******************//
