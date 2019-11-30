@@ -29,7 +29,12 @@ extern {
     pub fn read_header(this: &EnvelopeReader) -> Promise;
 
     #[wasm_bindgen(method, js_name = "readRowGroup")]
-    pub fn read_row_group(this: &EnvelopeReader, schema: &JsValue, row_group: &JsValue, column_list: &JsValue) -> Promise;
+    pub fn read_row_group(
+        this: &EnvelopeReader,
+        schema: &JsValue,
+        row_group: &JsValue,
+        column_list: &JsValue,
+    ) -> Promise;
 
     #[wasm_bindgen(method, js_name = "readColumnChunk")]
     pub fn read_column_chunk(this: &EnvelopeReader, schema: &JsValue, col_chunk: &JsValue) -> Promise;

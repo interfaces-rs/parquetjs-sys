@@ -11,7 +11,13 @@ extern {
     //*************//
 
     #[wasm_bindgen(constructor)]
-    pub fn new(schema: &JsValue, write_fn: &JsValue, close_fn: &JsValue, file_offset: &JsValue, opts: &JsValue) -> EnvelopeWriter;
+    pub fn new(
+        schema: &JsValue,
+        write_fn: &JsValue,
+        close_fn: &JsValue,
+        file_offset: &JsValue,
+        opts: &JsValue,
+    ) -> EnvelopeWriter;
 
     //****************//
     // Static Methods //
