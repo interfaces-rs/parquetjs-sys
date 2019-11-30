@@ -28,9 +28,7 @@ features = ["strict-macro"]
 
 [dependencies.web-sys]
 version = "^0.3.32"
-features = [
-  "Event",
-]
+features = []
 
 [dev-dependencies]
 wasm-bindgen-test = { version = "=0.3.5" }
