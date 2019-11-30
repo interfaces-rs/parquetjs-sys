@@ -1,12 +1,10 @@
-
-use crate::class::Cursor;
-use js_sys::Promise;
+use js_sys::{Function, Promise};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 extern {
     #[wasm_bindgen(js_name = "ParquetWriter")]
-    #[derive(Clone, Debug, Eq, PartialEq)]
+    #[derive(Clone, Debug, PartialEq)]
     pub type Writer;
 
     //*************//

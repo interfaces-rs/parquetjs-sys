@@ -1,11 +1,9 @@
-use crate::class::Cursor;
-use js_sys::Promise;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 extern {
     #[wasm_bindgen(js_name = "ParquetEnvelopeWriter")]
-    #[derive(Clone, Debug, Eq, PartialEq)]
+    #[derive(Clone, Debug, PartialEq)]
     pub type EnvelopeWriter;
 
     //*************//
@@ -27,17 +25,17 @@ extern {
     //******************//
 
     #[wasm_bindgen(method, js_name = "writeSection")]
-    pub fn set_page_size(this: &Writer, count: usize);
+    pub fn set_page_size(this: &EnvelopeWriter, count: usize);
 
     #[wasm_bindgen(method, js_name = "writeFooter")]
-    pub fn write_footer(this: &Writer, user_metadata: &JsValue) -> JsValue;
+    pub fn write_footer(this: &EnvelopeWriter, user_metadata: &JsValue) -> JsValue;
 
     #[wasm_bindgen(method, js_name = "writeHeader")]
-    pub fn write_header(this: &Writer) -> JsValue;
+    pub fn write_header(this: &EnvelopeWriter) -> JsValue;
 
     #[wasm_bindgen(method, js_name = "writeRowGroup")]
-    pub fn write_row_group(this: &Writer, records: &JsValue) -> JsValue;
+    pub fn write_row_group(this: &EnvelopeWriter, records: &JsValue) -> JsValue;
 
     #[wasm_bindgen(method, js_name = "writeSection")]
-    pub fn write_section(this: &Writer, buf: &JsValue);
+    pub fn write_section(this: &EnvelopeWriter, buf: &JsValue);
 }

@@ -1,10 +1,10 @@
-use js_sys::Promise;
+use js_sys::JsString;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 extern {
     #[wasm_bindgen(js_name = "ParquetSchema")]
-    #[derive(Clone, Debug, Eq, PartialEq)]
+    #[derive(Clone, Debug, PartialEq)]
     pub type Schema;
 
     //*************//
@@ -19,8 +19,8 @@ extern {
     //******************//
 
     #[wasm_bindgen(method, js_name = "findField")]
-    pub fn find_field(path: &JsString) -> JsValue;
+    pub fn find_field(this: &Schema, path: &JsString) -> JsValue;
 
     #[wasm_bindgen(method, js_name = "findFieldBranch")]
-    pub fn find_field_branch(path: &JsString) -> JsValue;
+    pub fn find_field_branch(this: &Schema, path: &JsString) -> JsValue;
 }
