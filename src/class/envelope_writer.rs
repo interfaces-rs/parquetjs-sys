@@ -43,12 +43,15 @@ extern {
     #[wasm_bindgen(method, js_name = "writeSection")]
     pub fn set_page_size(this: &ParquetEnvelopeWriter, count: usize);
 
+    #[must_use]
     #[wasm_bindgen(method, js_name = "writeFooter")]
     pub fn write_footer(this: &ParquetEnvelopeWriter, user_metadata: &Map) -> Promise;
 
+    #[must_use]
     #[wasm_bindgen(method, js_name = "writeHeader")]
     pub fn write_header(this: &ParquetEnvelopeWriter) -> Promise;
 
+    #[must_use]
     #[wasm_bindgen(method, js_name = "writeRowGroup")]
     pub fn write_row_group(this: &ParquetEnvelopeWriter, records: &RowBuffer) -> Promise;
 

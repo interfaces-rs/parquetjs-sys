@@ -22,6 +22,7 @@ extern {
     // Static Methods //
     //****************//
 
+    #[must_use]
     #[wasm_bindgen(static_method_of = ParquetReader, js_name = "openFile")]
     pub fn open_file(file_path: &JsString) -> Promise;
 
@@ -29,6 +30,7 @@ extern {
     // Instance Methods //
     //******************//
 
+    #[must_use]
     #[wasm_bindgen(method)]
     pub fn close(this: &ParquetReader) -> Promise;
 

@@ -19,6 +19,7 @@ extern {
     // Static Methods //
     //****************//
 
+    #[must_use]
     #[wasm_bindgen(static_method_of = ParquetEnvelopeReader, js_name = "openFile")]
     pub fn open_file(file_path: &JsString) -> Promise;
 
@@ -26,9 +27,11 @@ extern {
     // Instance Methods //
     //******************//
 
+    #[must_use]
     #[wasm_bindgen(method, js_name = "readHeader")]
     pub fn read_header(this: &ParquetEnvelopeReader) -> Promise;
 
+    #[must_use]
     #[wasm_bindgen(method, js_name = "readRowGroup")]
     pub fn read_row_group(
         this: &ParquetEnvelopeReader,

@@ -23,19 +23,26 @@ extern {
     // Static Methods //
     //****************//
 
+    #[must_use]
     #[wasm_bindgen(static_method_of = ParquetWriter, js_name = "openFile")]
-    pub fn open_file(schema: &ParquetSchema, file_path: &JsString, opts: WriterOptions) -> Promise;
+    pub fn open_file(schema: &ParquetSchema, file_path: &JsString, opts: Option<WriterOptions>) -> Promise;
 
     #[wasm_bindgen(static_method_of = ParquetWriter, js_name = "openStream")]
-    pub fn open_stream(schema: &ParquetSchema, output_stream: &WriteStream, opts: WriterOptions) -> ParquetWriter;
+    pub fn open_stream(
+        schema: &ParquetSchema,
+        output_stream: &WriteStream,
+        opts: Option<WriterOptions>,
+    ) -> ParquetWriter;
 
     //******************//
     // Instance Methods //
     //******************//
 
+    #[must_use]
     #[wasm_bindgen(method, js_name = "appendRow")]
     pub fn append_row(this: &ParquetWriter, row: &Row) -> Promise;
 
+    #[must_use]
     #[wasm_bindgen(method)]
     pub fn close(this: &ParquetWriter, callback: &Function) -> Promise;
 

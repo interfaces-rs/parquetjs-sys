@@ -27,6 +27,7 @@ extern {
     // Instance Methods //
     //******************//
 
+    #[must_use]
     #[wasm_bindgen(method)]
     pub fn next(this: &ParquetCursor) -> Promise;
 
