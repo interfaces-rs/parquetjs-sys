@@ -69,16 +69,12 @@ jobs:
         with:
           path: target
           key: ${{ runner.OS }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+      - run: cargo fetch
       - name: Run cargo clippy
         uses: actions-rs/cargo@v1
         with:
           command: clippy
           args: --frozen --all-features --all-targets -- -D warnings
-      - name: Run cargo fetch and re-run cargo clippy
-        if: failure()
-        run: |
-          cargo fetch
-          cargo clippy --frozen --all-features --all-targets -- -D warnings
 
   # build the documentation
   linux-cargo-docs:
@@ -136,16 +132,12 @@ jobs:
         with:
           path: target
           key: ${{ runner.OS }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+      - run: cargo fetch
       - name: Run cargo doc
         uses: actions-rs/cargo@v1
         with:
           command: doc
           args: --frozen --all-features --no-deps --package parquetjs-sys
-      - name: Run cargo fetch and re-run cargo fetch
-        if: failure()
-        run: |
-          cargo fetch
-          cargo doc --frozen --all-features --no-deps --package parquetjs-sys
       - env:
           PERSONAL_TOKEN: ${{ secrets.ACTIONS_GH_PAGES_TOKEN }}
           PUBLISH_BRANCH: gh-pages
@@ -180,16 +172,12 @@ jobs:
           rustup set profile minimal
           rustup toolchain install nightly --component rustfmt
           rustup default nightly
+      - run: cargo fetch
       - name: Run cargo fmt
         uses: actions-rs/cargo@v1
         with:
           command: fmt
           args: --all -- --check
-      - name: Run cargo fetch and re-run cargo fmt
-        if: failure()
-        run: |
-          cargo fetch
-          cargo fmt --all -- --check
 
   # verify that tests pass on linux
   linux-cargo-test:
@@ -255,9 +243,5 @@ jobs:
         with:
           node-version: "13.x"
       - run: npm ci
+      - run: cargo fetch
       - run: wasm-pack test --node -- --frozen --all-features --all-targets
-      - name: Run cargo fetch and re-run wasm-pack test
-        if: failure()
-        run: |
-          cargo fetch
-          wasm-pack test --node -- --frozen --all-features --all-targets
