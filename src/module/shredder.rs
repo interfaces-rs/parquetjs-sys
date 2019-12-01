@@ -1,7 +1,7 @@
 use crate::interface::{Row, RowBuffer, Schema};
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen(module = "electron")]
+#[wasm_bindgen]
 extern {
     #[derive(Clone, Debug, PartialEq)]
     pub type Shredder;
