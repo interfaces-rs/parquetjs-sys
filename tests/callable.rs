@@ -75,6 +75,7 @@ mod writer {
             .await
             .unwrap_throw()
             .unchecked_into::<parquet::ParquetWriter>();
+
         JsFuture::from(
             writer.append_row(
                 &Object::from_entries(
@@ -108,8 +109,7 @@ mod writer {
         .unwrap_throw();
 
         let clo = Closure::wrap(Box::new(move || {}) as Box<dyn Fn()>);
-        let fun = clo.as_ref().unchecked_ref();
-        JsFuture::from(writer.close(&fun)).await.unwrap_throw();
+        JsFuture::from(writer.close(&clo.as_ref().unchecked_ref())).await.unwrap_throw();
         clo.forget();
     }
 }
