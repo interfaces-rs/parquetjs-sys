@@ -1,4 +1,4 @@
-use js_sys::{Array, JsString, Map, Number};
+use js_sys::{Array, JsString, Number, Object};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -22,7 +22,7 @@ extern {
     pub fn field_count(this: &Field) -> Option<usize>;
 
     #[wasm_bindgen(method, getter)]
-    pub fn fields(this: &Field) -> Option<Map>;
+    pub fn fields(this: &Field) -> Option<Object>;
 
     #[wasm_bindgen(method, getter, js_name = "isNested")]
     pub fn is_nested(this: &Field) -> Option<bool>;

@@ -1,5 +1,5 @@
 use crate::interface;
-use js_sys::{Array, JsString, Map};
+use js_sys::{Array, JsString, Object};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "parquetjs")]
@@ -34,7 +34,7 @@ extern {
     pub fn field_list(this: &ParquetSchema) -> Array;
 
     #[wasm_bindgen(method, getter)]
-    pub fn fields(this: &ParquetSchema) -> Map;
+    pub fn fields(this: &ParquetSchema) -> Object;
 
     #[wasm_bindgen(method, getter)]
     pub fn schema(this: &ParquetSchema) -> interface::Schema;

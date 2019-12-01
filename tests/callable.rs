@@ -1,5 +1,5 @@
 mod helper {
-    use js_sys::{Map, Object, Promise, Reflect};
+    use js_sys::{Map, Object, Promise};
     use parquetjs_sys as parquet;
     use wasm_bindgen::prelude::*;
 
@@ -12,34 +12,33 @@ mod helper {
     }
 
     pub(crate) fn schema() -> parquet::ParquetSchema {
-        parquet::ParquetSchema::new(&{
-            Map::new()
-                .set(&"name".into(), &{
-                    let val = Object::new();
-                    Reflect::set(&val, &"type".into(), &"UTF8".into()).unwrap_throw();
-                    val.into()
-                })
-                .set(&"quantity".into(), &{
-                    let val = Object::new();
-                    Reflect::set(&val, &"type".into(), &"INT64".into()).unwrap_throw();
-                    val.into()
-                })
-                .set(&"price".into(), &{
-                    let val = Object::new();
-                    Reflect::set(&val, &"type".into(), &"DOUBLE".into()).unwrap_throw();
-                    val.into()
-                })
-                .set(&"date".into(), &{
-                    let val = Object::new();
-                    Reflect::set(&val, &"type".into(), &"TIMESTAMP_MILLIS".into()).unwrap_throw();
-                    val.into()
-                })
-                .set(&"in_stock".into(), &{
-                    let val = Object::new();
-                    Reflect::set(&val, &"type".into(), &"BOOLEAN".into()).unwrap_throw();
-                    val.into()
-                })
-        })
+        parquet::ParquetSchema::new(
+            &Object::from_entries(
+                &Map::new()
+                    .set(
+                        &"name".into(),
+                        &Object::from_entries(&Map::new().set(&"type".into(), &"UTF8".into())).unwrap_throw(),
+                    )
+                    .set(
+                        &"quantity".into(),
+                        &Object::from_entries(&Map::new().set(&"type".into(), &"INT64".into())).unwrap_throw(),
+                    )
+                    .set(
+                        &"price".into(),
+                        &Object::from_entries(&Map::new().set(&"type".into(), &"DOUBLE".into())).unwrap_throw(),
+                    )
+                    .set(
+                        &"date".into(),
+                        &Object::from_entries(&Map::new().set(&"type".into(), &"TIMESTAMP_MILLIS".into()))
+                            .unwrap_throw(),
+                    )
+                    .set(
+                        &"in_stock".into(),
+                        &Object::from_entries(&Map::new().set(&"type".into(), &"BOOLEAN".into())).unwrap_throw(),
+                    ),
+            )
+            .unwrap_throw(),
+        )
     }
 }
 

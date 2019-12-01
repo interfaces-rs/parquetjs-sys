@@ -2,7 +2,7 @@ use crate::{
     class::{ParquetCursor, ParquetEnvelopeReader, ParquetSchema},
     interface::Metadata,
 };
-use js_sys::{Array, JsString, Map, Promise};
+use js_sys::{Array, JsString, Object, Promise};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "parquetjs")]
@@ -38,7 +38,7 @@ extern {
     pub fn get_cursor(this: &ParquetReader, column_list: &Array) -> ParquetCursor;
 
     #[wasm_bindgen(method, js_name = "getMetadata")]
-    pub fn get_metadata(this: &ParquetReader) -> Map;
+    pub fn get_metadata(this: &ParquetReader) -> Object;
 
     #[wasm_bindgen(method, js_name = "getRowCount")]
     pub fn get_row_count(this: &ParquetReader) -> usize;

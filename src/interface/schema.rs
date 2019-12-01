@@ -1,1 +1,1 @@
-pub type Schema = js_sys::Map;
+pub type Schema = js_sys::Object;

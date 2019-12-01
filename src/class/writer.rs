@@ -2,7 +2,7 @@ use crate::{
     class::{ParquetEnvelopeWriter, ParquetSchema},
     interface::{Row, WriterOptions},
 };
-use js_sys::{Function, JsString, Map, Promise};
+use js_sys::{Function, JsString, Object, Promise};
 use node_sys::WriteStream;
 use wasm_bindgen::prelude::*;
 
@@ -75,5 +75,5 @@ extern {
     pub fn schema(this: &ParquetWriter) -> ParquetSchema;
 
     #[wasm_bindgen(method, getter, js_name = "userMetaData")]
-    pub fn user_meta_data(this: &ParquetWriter) -> Map;
+    pub fn user_meta_data(this: &ParquetWriter) -> Object;
 }

@@ -2,7 +2,7 @@ use crate::{
     class::ParquetSchema,
     interface::{RowBuffer, WriterOptions},
 };
-use js_sys::{Function, Map, Promise};
+use js_sys::{Function, Object, Promise};
 use node_sys::{Buffer, WriteStream};
 use wasm_bindgen::prelude::*;
 
@@ -45,7 +45,7 @@ extern {
 
     #[must_use]
     #[wasm_bindgen(method, js_name = "writeFooter")]
-    pub fn write_footer(this: &ParquetEnvelopeWriter, user_metadata: &Map) -> Promise;
+    pub fn write_footer(this: &ParquetEnvelopeWriter, user_metadata: &Object) -> Promise;
 
     #[must_use]
     #[wasm_bindgen(method, js_name = "writeHeader")]
