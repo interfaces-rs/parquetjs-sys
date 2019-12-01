@@ -1,4 +1,5 @@
-use js_sys::Promise;
+use crate::{class::Schema, interface::MetadataRowGroups};
+use js_sys::{Array, Function, JsString, Object, Promise};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -12,14 +13,14 @@ extern {
     //*************//
 
     #[wasm_bindgen(constructor)]
-    pub fn new(read_fn: &JsValue, close_fn: &JsValue, file_size: &JsValue) -> EnvelopeReader;
+    pub fn new(read_fn: &Function, close_fn: &Function, file_size: usize) -> EnvelopeReader;
 
     //****************//
     // Static Methods //
     //****************//
 
     #[wasm_bindgen(static_method_of = EnvelopeReader, js_name = "openFile")]
-    pub fn open_file(file_path: &JsValue) -> Promise;
+    pub fn open_file(file_path: &JsString) -> Promise;
 
     //******************//
     // Instance Methods //
@@ -31,13 +32,13 @@ extern {
     #[wasm_bindgen(method, js_name = "readRowGroup")]
     pub fn read_row_group(
         this: &EnvelopeReader,
-        schema: &JsValue,
-        row_group: &JsValue,
-        column_list: &JsValue,
+        schema: &Schema,
+        row_group: &MetadataRowGroups,
+        column_list: &Array,
     ) -> Promise;
 
     #[wasm_bindgen(method, js_name = "readColumnChunk")]
-    pub fn read_column_chunk(this: &EnvelopeReader, schema: &JsValue, col_chunk: &JsValue) -> Promise;
+    pub fn read_column_chunk(this: &EnvelopeReader, schema: &Schema, col_chunk: &Object) -> Promise;
 
     #[wasm_bindgen(method, js_name = "readFooter")]
     pub fn read_footer(this: &EnvelopeReader) -> Promise;
