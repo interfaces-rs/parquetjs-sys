@@ -2,7 +2,7 @@ use crate::{class::Schema, interface::MetadataRowGroups};
 use js_sys::{Array, Function, JsString, Object, Promise};
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
+#[wasm_bindgen(module = "parquetjs")]
 extern {
     #[wasm_bindgen(js_name = "ParquetEnvelopeReader")]
     #[derive(Clone, Debug, PartialEq)]

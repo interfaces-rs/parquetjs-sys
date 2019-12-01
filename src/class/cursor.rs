@@ -5,7 +5,7 @@ use crate::{
 use js_sys::{Array, Promise};
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
+#[wasm_bindgen(module = "parquetjs")]
 extern {
     #[wasm_bindgen(js_name = "ParquetCursor")]
     #[derive(Clone, Debug, PartialEq)]

@@ -6,7 +6,7 @@ use js_sys::{Function, Map, Promise};
 use node_sys::{Buffer, WriteStream};
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
+#[wasm_bindgen(module = "parquetjs")]
 extern {
     #[wasm_bindgen(js_name = "ParquetEnvelopeWriter")]
     #[derive(Clone, Debug, PartialEq)]

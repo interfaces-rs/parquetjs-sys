@@ -2,7 +2,7 @@ use crate::interface;
 use js_sys::{Array, JsString, Map};
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
+#[wasm_bindgen(module = "parquetjs")]
 extern {
     #[wasm_bindgen(js_name = "ParquetSchema")]
     #[derive(Clone, Debug, PartialEq)]
