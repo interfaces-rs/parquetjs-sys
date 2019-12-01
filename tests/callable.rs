@@ -44,7 +44,6 @@ mod helper {
 }
 
 mod reader {
-    use parquetjs_sys as parquet;
     use wasm_bindgen::prelude::*;
     use wasm_bindgen_futures::JsFuture;
     use wasm_bindgen_test::*;
