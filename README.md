@@ -5,7 +5,7 @@
       using <a href="https://github.com/rustwasm/wasm-bindgen"><code>wasm-bindgen</code></a></strong>
   </p>
   <p style="margin-bottom: 0.5ex;">
-    <a href="https://interfaces-rs.github.io/parquetjs-sys/electron_sys"><img
+    <a href="https://interfaces-rs.github.io/parquetjs-sys/parquetjs_sys"><img
         src="https://img.shields.io/badge/docs-latest-blueviolet?logo=Read-the-docs&logoColor=white" /></a>
     <a href="https://github.com/interfaces-rs/parquetjs-sys/actions"><img
         src="https://github.com/interfaces-rs/parquetjs-sys/workflows/ci/badge.svg" /></a>
