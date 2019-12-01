@@ -18,7 +18,7 @@
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">interface</span>::{<span class="ident">Row</span>, <span class="ident">RowBuffer</span>, <span class="ident">Schema</span>};
 <span class="kw">use</span> <span class="ident">wasm_bindgen</span>::<span class="ident">prelude</span>::<span class="kw-2">*</span>;
 
-<span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">module</span> <span class="op">=</span> <span class="string">&quot;electron&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">wasm_bindgen</span>]</span>
 <span class="kw">extern</span> {
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
     <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Shredder</span>;
