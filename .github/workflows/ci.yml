@@ -81,8 +81,6 @@ jobs:
     name: Run cargo docs
     needs: [skip-commit]
     runs-on: ubuntu-latest
-    env:
-      RUSTC_WRAPPER: sccache
     steps:
       - uses: actions/checkout@v1
       - name: Prepare for restoring caches
@@ -107,16 +105,6 @@ jobs:
         with:
           path: ~/.cache/sccache
           key: ${{ runner.OS }}-sccache-${{ hashFiles('**/Cargo.lock') }}
-      - name: Restore ~/.cargo/bin
-        uses: actions/cache@v1
-        id: cache-cargo-bin
-        with:
-          path: ~/.cargo/bin
-          key: ${{ runner.OS }}-cargo-bin-[sccache]-[linux-cargo-clippy]-${{ hashFiles('**/Cargo.lock') }}
-      - name: Install sccache
-        if: steps.cache-cargo-bin.outputs.cache-hit != 'true'
-        run: |
-          curl -L https://github.com/mozilla/sccache/releases/download/0.2.12/sccache-0.2.12-x86_64-unknown-linux-musl.tar.gz | tar zxf - --overwrite --strip-components=1 -C ~/.cargo/bin
       - name: Restore ~/.cargo/git
         uses: actions/cache@v1
         with:
@@ -150,8 +138,6 @@ jobs:
     name: Run cargo fmt
     needs: [skip-commit]
     runs-on: ubuntu-latest
-    env:
-      RUSTC_WRAPPER: sccache
     steps:
       - uses: actions/checkout@v1
       - name: Prepare for restoring caches
