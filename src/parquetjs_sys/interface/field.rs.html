@@ -60,43 +60,43 @@
 
     <span class="comment">// FIXME: are these readonly?</span>
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compression</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">JsString</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;dLevelMax&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;dLevelMax&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">d_level_max</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encoding</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">JsString</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;fieldCount&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;fieldCount&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">field_count</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fields</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Map</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;isNested&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;isNested&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_nested</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">JsString</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;originalType&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;originalType&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">original_type</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">JsString</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;primitiveType&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;primitiveType&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">primitive_type</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">JsString</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">path</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Array</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;rLevelMax&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;rLevelMax&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">r_level_max</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;repetitionType&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;repetitionType&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">repetition_type</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">JsString</span>;
 
-    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;typeLength&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">wasm_bindgen</span>(<span class="ident">method</span>, <span class="ident">getter</span>, <span class="ident">js_name</span> <span class="op">=</span> <span class="string">&quot;typeLength&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_length</span>(<span class="ident">this</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;
 }
 </pre></div>
