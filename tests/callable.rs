@@ -61,3 +61,55 @@ mod schema {
         crate::helper::schema();
     }
 }
+
+mod writer {
+    use js_sys::{Date, Map, Object};
+    use parquetjs_sys as parquet;
+    use wasm_bindgen::{prelude::*, JsCast};
+    use wasm_bindgen_futures::JsFuture;
+    use wasm_bindgen_test::*;
+
+    #[wasm_bindgen_test]
+    async fn append_row() {
+        let writer = JsFuture::from(crate::helper::open_file())
+            .await
+            .unwrap_throw()
+            .unchecked_into::<parquet::ParquetWriter>();
+        JsFuture::from(
+            writer.append_row(
+                &Object::from_entries(
+                    &Map::new()
+                        .set(&"name".into(), &"apples".into())
+                        .set(&"quantity".into(), &10u32.into())
+                        .set(&"price".into(), &2.5f32.into())
+                        .set(&"date".into(), &Date::now().into())
+                        .set(&"in_stock".into(), &true.into()),
+                )
+                .unwrap_throw(),
+            ),
+        )
+        .await
+        .unwrap_throw();
+
+        JsFuture::from(
+            writer.append_row(
+                &Object::from_entries(
+                    &Map::new()
+                        .set(&"name".into(), &"oranges".into())
+                        .set(&"quantity".into(), &10u32.into())
+                        .set(&"price".into(), &2.5f32.into())
+                        .set(&"date".into(), &Date::now().into())
+                        .set(&"in_stock".into(), &true.into()),
+                )
+                .unwrap_throw(),
+            ),
+        )
+        .await
+        .unwrap_throw();
+
+        let clo = Closure::wrap(Box::new(move || {}) as Box<dyn Fn()>);
+        let fun = clo.as_ref().unchecked_ref();
+        JsFuture::from(writer.close(&fun)).await.unwrap_throw();
+        clo.forget();
+    }
+}
