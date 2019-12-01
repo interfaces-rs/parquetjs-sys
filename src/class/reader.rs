@@ -1,5 +1,5 @@
 use crate::{
-    class::{Cursor, EnvelopeReader, Schema},
+    class::{ParquetCursor, ParquetEnvelopeReader, ParquetSchema},
     interface::Metadata,
 };
 use js_sys::{Array, JsString, Map, Promise};
@@ -9,20 +9,20 @@ use wasm_bindgen::prelude::*;
 extern {
     #[wasm_bindgen(js_name = "ParquetReader")]
     #[derive(Clone, Debug, PartialEq)]
-    pub type Reader;
+    pub type ParquetReader;
 
     //*************//
     // Constructor //
     //*************//
 
     #[wasm_bindgen(constructor)]
-    pub fn new(metadata: &Metadata, envelope_reader: &EnvelopeReader) -> Reader;
+    pub fn new(metadata: &Metadata, envelope_reader: &ParquetEnvelopeReader) -> ParquetReader;
 
     //****************//
     // Static Methods //
     //****************//
 
-    #[wasm_bindgen(static_method_of = Reader, js_name = "openFile")]
+    #[wasm_bindgen(static_method_of = ParquetReader, js_name = "openFile")]
     pub fn open_file(file_path: &JsString) -> Promise;
 
     //******************//
@@ -30,30 +30,30 @@ extern {
     //******************//
 
     #[wasm_bindgen(method)]
-    pub fn close(this: &Reader) -> Promise;
+    pub fn close(this: &ParquetReader) -> Promise;
 
     #[wasm_bindgen(method, js_name = "getCursor")]
-    pub fn get_cursor(this: &Reader, column_list: &Array) -> Cursor;
+    pub fn get_cursor(this: &ParquetReader, column_list: &Array) -> ParquetCursor;
 
     #[wasm_bindgen(method, js_name = "getMetadata")]
-    pub fn get_metadata(this: &Reader) -> Map;
+    pub fn get_metadata(this: &ParquetReader) -> Map;
 
     #[wasm_bindgen(method, js_name = "getRowCount")]
-    pub fn get_row_count(this: &Reader) -> usize;
+    pub fn get_row_count(this: &ParquetReader) -> usize;
 
     #[wasm_bindgen(method, js_name = "getSchema")]
-    pub fn get_schema(this: &Reader) -> Schema;
+    pub fn get_schema(this: &ParquetReader) -> ParquetSchema;
 
     //*********************//
     // Instance Properties //
     //*********************//
 
     #[wasm_bindgen(method, getter)]
-    pub fn envelope_reader(this: &Reader) -> EnvelopeReader;
+    pub fn envelope_reader(this: &ParquetReader) -> ParquetEnvelopeReader;
 
     #[wasm_bindgen(method, getter)]
-    pub fn metadata(this: &Reader) -> Metadata;
+    pub fn metadata(this: &ParquetReader) -> Metadata;
 
     #[wasm_bindgen(method, getter)]
-    pub fn schema(this: &Reader) -> Schema;
+    pub fn schema(this: &ParquetReader) -> ParquetSchema;
 }

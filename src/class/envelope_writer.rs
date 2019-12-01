@@ -1,5 +1,5 @@
 use crate::{
-    class::Schema,
+    class::ParquetSchema,
     interface::{RowBuffer, WriterOptions},
 };
 use js_sys::{Function, Map, Promise};
@@ -10,7 +10,7 @@ use wasm_bindgen::prelude::*;
 extern {
     #[wasm_bindgen(js_name = "ParquetEnvelopeWriter")]
     #[derive(Clone, Debug, PartialEq)]
-    pub type EnvelopeWriter;
+    pub type ParquetEnvelopeWriter;
 
     //*************//
     // Constructor //
@@ -18,36 +18,40 @@ extern {
 
     #[wasm_bindgen(constructor)]
     pub fn new(
-        schema: &Schema,
+        schema: &ParquetSchema,
         write_fn: &Function,
         close_fn: &Function,
         file_offset: usize,
         opts: WriterOptions,
-    ) -> EnvelopeWriter;
+    ) -> ParquetEnvelopeWriter;
 
     //****************//
     // Static Methods //
     //****************//
 
-    #[wasm_bindgen(static_method_of = EnvelopeWriter, js_name = "openStream")]
-    pub fn open_stream(schema: &Schema, output_stream: &WriteStream, opts: WriterOptions) -> EnvelopeWriter;
+    #[wasm_bindgen(static_method_of = ParquetEnvelopeWriter, js_name = "openStream")]
+    pub fn open_stream(
+        schema: &ParquetSchema,
+        output_stream: &WriteStream,
+        opts: WriterOptions,
+    ) -> ParquetEnvelopeWriter;
 
     //******************//
     // Instance Methods //
     //******************//
 
     #[wasm_bindgen(method, js_name = "writeSection")]
-    pub fn set_page_size(this: &EnvelopeWriter, count: usize);
+    pub fn set_page_size(this: &ParquetEnvelopeWriter, count: usize);
 
     #[wasm_bindgen(method, js_name = "writeFooter")]
-    pub fn write_footer(this: &EnvelopeWriter, user_metadata: &Map) -> Promise;
+    pub fn write_footer(this: &ParquetEnvelopeWriter, user_metadata: &Map) -> Promise;
 
     #[wasm_bindgen(method, js_name = "writeHeader")]
-    pub fn write_header(this: &EnvelopeWriter) -> Promise;
+    pub fn write_header(this: &ParquetEnvelopeWriter) -> Promise;
 
     #[wasm_bindgen(method, js_name = "writeRowGroup")]
-    pub fn write_row_group(this: &EnvelopeWriter, records: &RowBuffer) -> Promise;
+    pub fn write_row_group(this: &ParquetEnvelopeWriter, records: &RowBuffer) -> Promise;
 
     #[wasm_bindgen(method, js_name = "writeSection")]
-    pub fn write_section(this: &EnvelopeWriter, buf: &Buffer);
+    pub fn write_section(this: &ParquetEnvelopeWriter, buf: &Buffer);
 }

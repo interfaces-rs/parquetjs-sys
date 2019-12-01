@@ -4,26 +4,25 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "parquetjs")]
 extern {
-    #[wasm_bindgen(js_name = "ParquetSchema")]
     #[derive(Clone, Debug, PartialEq)]
-    pub type Schema;
+    pub type ParquetSchema;
 
     //*************//
     // Constructor //
     //*************//
 
     #[wasm_bindgen(constructor)]
-    pub fn new(schema: &interface::Schema) -> Schema;
+    pub fn new(schema: &interface::Schema) -> ParquetSchema;
 
     //******************//
     // Instance Methods //
     //******************//
 
     #[wasm_bindgen(method, js_name = "findField")]
-    pub fn find_field(this: &Schema, path: &JsString) -> JsValue;
+    pub fn find_field(this: &ParquetSchema, path: &JsString) -> JsValue;
 
     #[wasm_bindgen(method, js_name = "findFieldBranch")]
-    pub fn find_field_branch(this: &Schema, path: &JsString) -> JsValue;
+    pub fn find_field_branch(this: &ParquetSchema, path: &JsString) -> JsValue;
 
     //*********************//
     // Instance Properties //
@@ -32,11 +31,11 @@ extern {
     // FIXME: are these readonly?
 
     #[wasm_bindgen(getter)]
-    pub fn field_list(this: &Schema) -> Array;
+    pub fn field_list(this: &ParquetSchema) -> Array;
 
     #[wasm_bindgen(getter)]
-    pub fn fields(this: &Schema) -> Map;
+    pub fn fields(this: &ParquetSchema) -> Map;
 
     #[wasm_bindgen(getter)]
-    pub fn schema(this: &Schema) -> interface::Schema;
+    pub fn schema(this: &ParquetSchema) -> interface::Schema;
 }
