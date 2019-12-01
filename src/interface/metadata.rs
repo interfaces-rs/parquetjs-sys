@@ -9,21 +9,21 @@ extern {
 
     // FIXME: are these readonly?
 
-    #[wasm_bindgen(getter, js_name = "createdBy")]
+    #[wasm_bindgen(method, getter, js_name = "createdBy")]
     pub fn created_by(this: &Metadata) -> JsString;
 
-    #[wasm_bindgen(getter, js_name = "keyValueMetadata")]
+    #[wasm_bindgen(method, getter, js_name = "keyValueMetadata")]
     pub fn key_value_metadata(this: &Metadata) -> Array;
 
-    #[wasm_bindgen(getter, js_name = "numRows")]
+    #[wasm_bindgen(method, getter, js_name = "numRows")]
     pub fn num_rows(this: &Metadata) -> usize;
 
-    #[wasm_bindgen(getter, js_name = "rowGroups")]
+    #[wasm_bindgen(method, getter, js_name = "rowGroups")]
     pub fn row_groups(this: &Metadata) -> Array;
 
-    #[wasm_bindgen(getter)]
+    #[wasm_bindgen(method, getter)]
     pub fn schema(this: &Metadata) -> Array;
 
-    #[wasm_bindgen(getter)]
+    #[wasm_bindgen(method, getter)]
     pub fn version(this: &Metadata) -> Number;
 }

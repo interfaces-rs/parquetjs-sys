@@ -30,12 +30,12 @@ extern {
 
     // FIXME: are these readonly?
 
-    #[wasm_bindgen(getter)]
+    #[wasm_bindgen(method, getter)]
     pub fn field_list(this: &ParquetSchema) -> Array;
 
-    #[wasm_bindgen(getter)]
+    #[wasm_bindgen(method, getter)]
     pub fn fields(this: &ParquetSchema) -> Map;
 
-    #[wasm_bindgen(getter)]
+    #[wasm_bindgen(method, getter)]
     pub fn schema(this: &ParquetSchema) -> interface::Schema;
 }
