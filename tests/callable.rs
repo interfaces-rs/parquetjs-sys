@@ -109,7 +109,9 @@ mod writer {
         .unwrap_throw();
 
         let clo = Closure::wrap(Box::new(move || {}) as Box<dyn Fn()>);
-        JsFuture::from(writer.close(&clo.as_ref().unchecked_ref())).await.unwrap_throw();
+        JsFuture::from(writer.close(&clo.as_ref().unchecked_ref()))
+            .await
+            .unwrap_throw();
         clo.forget();
     }
 }
