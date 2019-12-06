@@ -44,7 +44,7 @@ extern {
 
     #[must_use]
     #[wasm_bindgen(method)]
-    pub fn close(this: &ParquetWriter, callback: &Function) -> Promise;
+    pub fn close(this: &ParquetWriter, callback: Option<&Function>) -> Promise;
 
     #[wasm_bindgen(method, js_name = "setMetadata")]
     pub fn set_metadata(this: &ParquetWriter, key: &JsValue, value: &JsValue);
