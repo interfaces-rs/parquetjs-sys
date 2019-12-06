@@ -35,7 +35,7 @@ extern {
     pub fn close(this: &ParquetReader) -> Promise;
 
     #[wasm_bindgen(method, js_name = "getCursor")]
-    pub fn get_cursor(this: &ParquetReader, column_list: &Array) -> ParquetCursor;
+    pub fn get_cursor(this: &ParquetReader, column_list: Option<&Array>) -> ParquetCursor;
 
     #[wasm_bindgen(method, js_name = "getMetadata")]
     pub fn get_metadata(this: &ParquetReader) -> Object;
