@@ -1,14 +1,30 @@
-mod helper {
-    use js_sys::{Map, Object, Promise};
+pub(crate) mod helper {
+    use js_sys::{Map, Object};
     use parquetjs_sys as parquet;
     use wasm_bindgen::prelude::*;
 
-    #[must_use]
-    pub(crate) fn open_file() -> Promise {
-        let schema = crate::helper::schema();
-        let file_path = &"produce.parquet".into();
-        let opts = None;
-        parquet::ParquetWriter::open_file(&schema, file_path, opts)
+    pub(crate) mod reader {
+        use js_sys::Promise;
+        use parquetjs_sys as parquet;
+
+        #[must_use]
+        pub(crate) fn open_file() -> Promise {
+            let file_path = &"produce.parquet".into();
+            parquet::ParquetReader::open_file(file_path)
+        }
+    }
+
+    pub(crate) mod writer {
+        use js_sys::Promise;
+        use parquetjs_sys as parquet;
+
+        #[must_use]
+        pub(crate) fn open_file() -> Promise {
+            let schema = crate::helper::schema();
+            let file_path = &"produce.parquet".into();
+            let opts = None;
+            parquet::ParquetWriter::open_file(&schema, file_path, opts)
+        }
     }
 
     pub(crate) fn schema() -> parquet::ParquetSchema {
@@ -43,13 +59,18 @@ mod helper {
 }
 
 mod reader {
-    use wasm_bindgen::prelude::*;
+    use parquetjs_sys as parquet;
+    use wasm_bindgen::{prelude::*, JsCast};
     use wasm_bindgen_futures::JsFuture;
     use wasm_bindgen_test::*;
 
     #[wasm_bindgen_test]
     async fn open_file() {
-        JsFuture::from(crate::helper::open_file()).await.unwrap_throw();
+        let reader = JsFuture::from(crate::helper::reader::open_file())
+            .await
+            .unwrap_throw()
+            .unchecked_into::<parquet::ParquetReader>();
+        JsFuture::from(reader.close()).await.unwrap_throw();
     }
 }
 
@@ -71,7 +92,7 @@ mod writer {
 
     #[wasm_bindgen_test]
     async fn append_row() {
-        let writer = JsFuture::from(crate::helper::open_file())
+        let writer = JsFuture::from(crate::helper::writer::open_file())
             .await
             .unwrap_throw()
             .unchecked_into::<parquet::ParquetWriter>();
