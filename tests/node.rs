@@ -9,7 +9,7 @@ pub(crate) mod helper {
 
         #[must_use]
         pub(crate) fn open_file() -> Promise {
-            let file_path = &"produce.parquet".into();
+            let file_path = &"data/read/produce.parquet".into();
             parquet::ParquetReader::open_file(file_path)
         }
     }
@@ -21,7 +21,7 @@ pub(crate) mod helper {
         #[must_use]
         pub(crate) fn open_file() -> Promise {
             let schema = crate::helper::schema();
-            let file_path = &"produce.parquet".into();
+            let file_path = &"data/write/produce.parquet".into();
             let opts = None;
             parquet::ParquetWriter::open_file(&schema, file_path, opts)
         }
