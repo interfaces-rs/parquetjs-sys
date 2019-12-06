@@ -66,37 +66,34 @@ mod reader {
 
     #[wasm_bindgen_test]
     async fn open_file() {
-        let reader = JsFuture::from(crate::helper::reader::open_file())
-            .await
-            .unwrap_throw()
-            .unchecked_into::<parquet::ParquetReader>();
-        JsFuture::from(reader.close()).await.unwrap_throw();
+        if let Ok(value) = JsFuture::from(crate::helper::reader::open_file()).await {
+            let reader = value.unchecked_into::<parquet::ParquetReader>();
+            JsFuture::from(reader.close()).await.unwrap_throw();
+        }
     }
 
     #[wasm_bindgen_test]
     async fn get_cursor() {
-        let reader = JsFuture::from(crate::helper::reader::open_file())
-            .await
-            .unwrap_throw()
-            .unchecked_into::<parquet::ParquetReader>();
-        reader.get_cursor(None);
-        JsFuture::from(reader.close()).await.unwrap_throw();
+        if let Ok(value) = JsFuture::from(crate::helper::reader::open_file()).await {
+            let reader = value.unchecked_into::<parquet::ParquetReader>();
+            reader.get_cursor(None);
+            JsFuture::from(reader.close()).await.unwrap_throw();
+        }
     }
 
     #[wasm_bindgen_test]
     async fn iterate_cursor() {
-        let reader = JsFuture::from(crate::helper::reader::open_file())
-            .await
-            .unwrap_throw()
-            .unchecked_into::<parquet::ParquetReader>();
-        let cursor = reader.get_cursor(None);
-        while let Ok(value) = JsFuture::from(cursor.next()).await {
-            if value.is_null() {
-                break;
+        if let Ok(value) = JsFuture::from(crate::helper::reader::open_file()).await {
+            let reader = value.unchecked_into::<parquet::ParquetReader>();
+            let cursor = reader.get_cursor(None);
+            while let Ok(value) = JsFuture::from(cursor.next()).await {
+                if value.is_null() {
+                    break;
+                }
+                value.unchecked_into::<parquet::Row>();
             }
-            value.unchecked_into::<parquet::Row>();
+            JsFuture::from(reader.close()).await.unwrap_throw();
         }
-        JsFuture::from(reader.close()).await.unwrap_throw();
     }
 }
 
