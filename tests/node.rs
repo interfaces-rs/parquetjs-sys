@@ -93,9 +93,8 @@ mod reader {
         while let Ok(value) = JsFuture::from(cursor.next()).await {
             if value.is_null() {
                 break;
-            } else {
-                value.unchecked_into::<parquet::Row>();
             }
+            value.unchecked_into::<parquet::Row>();
         }
         JsFuture::from(reader.close()).await.unwrap_throw();
     }
