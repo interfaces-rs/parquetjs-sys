@@ -72,6 +72,16 @@ mod reader {
             .unchecked_into::<parquet::ParquetReader>();
         JsFuture::from(reader.close()).await.unwrap_throw();
     }
+
+    #[wasm_bindgen_test]
+    async fn get_cursor() {
+        let reader = JsFuture::from(crate::helper::reader::open_file())
+            .await
+            .unwrap_throw()
+            .unchecked_into::<parquet::ParquetReader>();
+        reader.get_cursor(None);
+        JsFuture::from(reader.close()).await.unwrap_throw();
+    }
 }
 
 mod schema {
