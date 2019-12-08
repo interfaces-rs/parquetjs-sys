@@ -36,8 +36,22 @@ pub(crate) mod helper {
                         &Object::from_entries(&Map::new().set(&"type".into(), &"UTF8".into())).unwrap_throw(),
                     )
                     .set(
+                        &"colours".into(),
+                        &Object::from_entries(
+                            &Map::new()
+                                .set(&"type".into(), &"UTF8".into())
+                                .set(&"repeated".into(), &true.into()),
+                        )
+                        .unwrap_throw(),
+                    )
+                    .set(
                         &"quantity".into(),
-                        &Object::from_entries(&Map::new().set(&"type".into(), &"INT64".into())).unwrap_throw(),
+                        &Object::from_entries(
+                            &Map::new()
+                                .set(&"type".into(), &"INT64".into())
+                                .set(&"optional".into(), &true.into()),
+                        )
+                        .unwrap_throw(),
                     )
                     .set(
                         &"price".into(),
@@ -107,7 +121,7 @@ mod schema {
 }
 
 mod writer {
-    use js_sys::{Date, Map, Object};
+    use js_sys::{Array, Date, Map, Object};
     use parquetjs_sys as parquet;
     use wasm_bindgen::{prelude::*, JsCast};
     use wasm_bindgen_futures::JsFuture;
@@ -125,6 +139,12 @@ mod writer {
                 &Object::from_entries(
                     &Map::new()
                         .set(&"name".into(), &"apples".into())
+                        .set(&"colours".into(), &{
+                            let val = Array::new();
+                            val.push(&"red".into());
+                            val.push(&"green".into());
+                            val.into()
+                        })
                         .set(&"quantity".into(), &10u32.into())
                         .set(&"price".into(), &2.5f32.into())
                         .set(&"date".into(), &Date::now().into())
@@ -141,7 +161,11 @@ mod writer {
                 &Object::from_entries(
                     &Map::new()
                         .set(&"name".into(), &"oranges".into())
-                        .set(&"quantity".into(), &10u32.into())
+                        .set(&"colours".into(), &{
+                            let val = Array::new();
+                            val.push(&"orange".into());
+                            val.into()
+                        })
                         .set(&"price".into(), &2.5f32.into())
                         .set(&"date".into(), &Date::now().into())
                         .set(&"in_stock".into(), &true.into()),
