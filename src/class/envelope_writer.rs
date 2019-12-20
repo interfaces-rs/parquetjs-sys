@@ -3,7 +3,7 @@ use crate::{
     interface::{RowBuffer, WriterOptions},
 };
 use js_sys::{Function, Object, Promise};
-use node_sys::{Buffer, WriteStream};
+use node_sys::{Buffer, fs};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "parquetjs")]
@@ -32,7 +32,7 @@ extern {
     #[wasm_bindgen(static_method_of = ParquetEnvelopeWriter, js_name = "openStream")]
     pub fn open_stream(
         schema: &ParquetSchema,
-        output_stream: &WriteStream,
+        output_stream: &fs::WriteStream,
         opts: WriterOptions,
     ) -> ParquetEnvelopeWriter;
 

@@ -3,7 +3,7 @@ use crate::{
     interface::{Row, WriterOptions},
 };
 use js_sys::{Function, JsString, Object, Promise};
-use node_sys::WriteStream;
+use node_sys::fs;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "parquetjs")]
@@ -30,7 +30,7 @@ extern {
     #[wasm_bindgen(static_method_of = ParquetWriter, js_name = "openStream")]
     pub fn open_stream(
         schema: &ParquetSchema,
-        output_stream: &WriteStream,
+        output_stream: &fs::WriteStream,
         opts: Option<WriterOptions>,
     ) -> ParquetWriter;
 
